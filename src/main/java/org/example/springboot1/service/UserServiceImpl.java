@@ -3,12 +3,10 @@ package org.example.springboot1.service;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.example.springboot1.model.User;
-import org.example.springboot1.repository.UserDao;
-
+import org.example.springboot1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -18,22 +16,32 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
     @Override
     public List<User> userList() {
-        return userDao.findAll();
+        return userRepository.findAll();
     }
+
     @Override
     public void save(User user) {
-        userDao.save(user);
+        userRepository.save(user);
     }
+
+    @Override
+    public void update(User user) {
+        userRepository.update(user);
+    }
+
     @Override
     public void delete(Long id) {
-        userDao.deleteById(id);
+        userRepository.delete(id);
     }
+
     @Override
     public User getById(long id) {
-        return userDao.getById(id);
+        return userRepository.getById(id);
     }
+
 }
+

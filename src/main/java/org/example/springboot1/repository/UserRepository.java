@@ -1,13 +1,14 @@
-package org.example.springboot1.service;
+package org.example.springboot1.repository;
 
 import org.example.springboot1.model.User;
 import java.util.List;
 
-public interface UserService {
+public interface UserRepository {
 
-    List<User> userList();
     void save(User user);
     void update(User user);
+    User getById(Long id);
+    List<User> findAll();
     void delete(Long id);
-    User getById(long id);
+
 }
